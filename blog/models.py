@@ -12,9 +12,12 @@ class Post(models.Model):
         on_delete=models.CASCADE,
     )
     body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse("post_detail", kwargs={"pk": self.pk})
+
